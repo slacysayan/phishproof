@@ -6,7 +6,7 @@ export const GlassCard = React.forwardRef(({ className, children, ...props }, re
     ref={ref}
     data-testid="glass-card"
     className={cn(
-      'pp-glass rounded-[var(--pp-r-lg)]',
+      'bg-white rounded-[var(--pp-r-md)] shadow-[var(--pp-shadow-card)]',
       className
     )}
     {...props}

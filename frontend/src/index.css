@@ -2,69 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Fonts - Cal Sans (display) + Inter (body) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/calcom/font@main/dist/web/fonts.css');
 
 @layer base {
   :root {
-    --font-heading: 'Nunito', ui-sans-serif, system-ui;
+    /* Typography */
+    --font-display: 'Cal Sans', 'Inter', ui-sans-serif, system-ui;
     --font-body: 'Inter', ui-sans-serif, system-ui;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular;
 
+    /* Cal.com core neutrals */
+    --pp-ink: #242424;         /* primary text */
+    --pp-ink-deep: #111111;    /* deep text */
+    --pp-ink-mute: #898989;    /* secondary text */
+    --pp-bg: #ffffff;          /* canvas */
+    --pp-bg-soft: #fafafa;     /* section tint */
+    --pp-bg-2: #f5f5f5;        /* slightly more tint */
+    --pp-line: rgba(34, 42, 53, 0.08);
+    --pp-ring: rgba(34, 42, 53, 0.10);
+
+    /* Accent colors (used sparingly) */
     --pp-correct: 76 175 80;
     --pp-wrong: 244 67 54;
     --pp-warning: 255 152 0;
-    --pp-xp: 255 215 0;
-    --pp-indigo: 92 107 192;
+    --pp-xp: 255 183 3;
+    --pp-indigo: 58 142 230;
     --pp-scam: 229 57 53;
     --pp-safe: 67 160 71;
+    --pp-duo-green: #58cc02; /* Duolingo green */
+    --pp-duo-green-dark: #58a700;
+    --pp-duo-blue: #1cb0f6;
 
-    --pp-glass: rgba(255,255,255,0.18);
-    --pp-glass-stroke: rgba(255,255,255,0.14);
-    --pp-clay: rgba(255,255,255,0.72);
-    --pp-clay-stroke: rgba(255,255,255,0.10);
+    /* Radii */
+    --pp-r-sm: 8px;
+    --pp-r-md: 12px;
+    --pp-r-lg: 16px;
+    --pp-r-xl: 20px;
+    --pp-r-pill: 9999px;
 
-    --pp-text: rgba(255,255,255,0.92);
-    --pp-text-2: rgba(255,255,255,0.78);
-    --pp-text-3: rgba(255,255,255,0.60);
+    /* Cal.com shadow system */
+    --pp-shadow-ring: 0 0 0 1px rgba(34,42,53,0.08);
+    --pp-shadow-1: 0 1px 1.9px 0 rgba(0,0,0,0.16) inset;
+    --pp-shadow-2: 0 1px 5px -4px rgba(19,19,22,0.7), 0 0 0 1px rgba(34,42,53,0.08), 0 4px 8px 0 rgba(34,42,53,0.05);
+    --pp-shadow-3: 0 1px 5px -4px rgba(36,36,36,0.7), 0 4px 8px rgba(36,36,36,0.05);
+    --pp-shadow-inset-hl: inset 0 2px 0 rgba(255,255,255,0.15);
+    --pp-shadow-soft: 0 4px 8px rgba(34,42,53,0.05);
+    --pp-shadow-card: 0 1px 5px -4px rgba(19,19,22,0.7), 0 0 0 1px rgba(34,42,53,0.08), 0 4px 8px 0 rgba(34,42,53,0.05);
+    --pp-shadow-card-hover: 0 2px 8px -4px rgba(19,19,22,0.8), 0 0 0 1px rgba(34,42,53,0.12), 0 10px 20px 0 rgba(34,42,53,0.08);
 
-    --pp-r-lg: 24px;
-    --pp-r-md: 18px;
-    --pp-r-sm: 14px;
-    --pp-r-pill: 999px;
-
-    --pp-shadow-clay-1: 0 18px 40px rgba(0,0,0,0.45);
-    --pp-shadow-clay-2: inset 0 1px 0 rgba(255,255,255,0.35);
-    --pp-shadow-clay-3: inset 0 -10px 24px rgba(0,0,0,0.22);
-
-    --pp-shadow-glass-1: 0 18px 50px rgba(0,0,0,0.55);
-    --pp-shadow-glass-2: inset 0 1px 0 rgba(255,255,255,0.18);
-
-    --pp-ring: rgba(92,107,192,0.55);
-
-    --pp-ease-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    --pp-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-
-    /* shadcn tokens (kept for compatibility) */
-    --background: 230 40% 8%;
-    --foreground: 0 0% 98%;
-    --card: 230 40% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 230 40% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 232 45% 55%;
+    /* Shadcn compat (grayscale) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 14%;
+    --primary: 0 0% 14%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 230 30% 18%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 230 30% 18%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 230 30% 18%;
-    --accent-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 14%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 54%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 14%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 230 30% 22%;
-    --input: 230 30% 22%;
-    --ring: 232 45% 55%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 210 80% 52%;
     --radius: 0.5rem;
   }
 }
@@ -75,121 +82,188 @@
   body {
     margin: 0;
     font-family: var(--font-body);
-    color: var(--pp-text);
-    background: #0a0f22;
+    color: var(--pp-ink);
+    background: var(--pp-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
-  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 800; letter-spacing: -0.01em; }
-  button { font-family: var(--font-heading); }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--pp-ink);
+    line-height: 1.1;
+  }
+  h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.2px; /* tighter Cal Sans needs positive tracking below 24px */
+  }
+  button { font-family: var(--font-body); }
 }
 
-/* Animated gradient background */
-.pp-animated-bg {
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #533483);
-  background-size: 400% 400%;
-  animation: ppGradient 15s ease infinite;
+/* ================== Surfaces ================== */
+.pp-card {
+  background: #ffffff;
+  border-radius: var(--pp-r-md);
+  box-shadow: var(--pp-shadow-card);
 }
-@keyframes ppGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.pp-card-hover:hover {
+  box-shadow: var(--pp-shadow-card-hover);
+  transform: translateY(-1px);
+  transition: all 200ms ease;
 }
-
-/* Decorative orbs */
-.pp-orb {
-  position: fixed;
-  pointer-events: none;
-  border-radius: 9999px;
-  filter: blur(60px);
-  opacity: 0.35;
-  z-index: 0;
+.pp-soft-section {
+  background: var(--pp-bg-soft);
 }
-.pp-orb-1 { width: 260px; height: 260px; top: -80px; right: -60px; background: radial-gradient(circle, #F093FB 0%, transparent 70%); }
-.pp-orb-2 { width: 320px; height: 320px; bottom: -100px; left: -80px; background: radial-gradient(circle, #4facfe 0%, transparent 70%); }
-.pp-orb-3 { width: 200px; height: 200px; top: 40%; left: 60%; background: radial-gradient(circle, #F5576C 0%, transparent 70%); opacity: 0.25; }
-
-/* Surfaces */
-.pp-glass {
-  background: var(--pp-glass);
-  border: 1px solid var(--pp-glass-stroke);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: var(--pp-shadow-glass-1), var(--pp-shadow-glass-2);
-  border-radius: var(--pp-r-lg);
-}
-.pp-clay {
-  background: var(--pp-clay);
-  border: 1px solid var(--pp-clay-stroke);
-  box-shadow: var(--pp-shadow-clay-1), var(--pp-shadow-clay-2), var(--pp-shadow-clay-3);
-  border-radius: var(--pp-r-lg);
+.pp-ring {
+  box-shadow: 0 0 0 1px var(--pp-ring);
 }
 
-/* Pulse animation */
-@keyframes ppPulse {
-  0%, 100% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.08); opacity: 0.35; }
+/* ================== Duolingo-style buttons ================== */
+.pp-duo-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  user-select: none;
+  cursor: pointer;
 }
-.pp-pulse { animation: ppPulse 1.8s ease-in-out infinite; }
+.pp-duo-btn:active { transform: translateY(2px); }
+.pp-duo-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* Floating animation for mascot */
+.pp-duo-green {
+  background: #58cc02;
+  color: #ffffff;
+  border-color: #58cc02;
+  box-shadow: 0 4px 0 #58a700;
+}
+.pp-duo-green:hover { background: #5fd80a; }
+.pp-duo-green:active { box-shadow: 0 1px 0 #58a700; }
+
+.pp-duo-blue {
+  background: #1cb0f6;
+  color: #ffffff;
+  border-color: #1cb0f6;
+  box-shadow: 0 4px 0 #0e91d1;
+}
+.pp-duo-blue:hover { background: #25bdff; }
+.pp-duo-blue:active { box-shadow: 0 1px 0 #0e91d1; }
+
+.pp-duo-dark {
+  background: #242424;
+  color: #ffffff;
+  border-color: #242424;
+  box-shadow: 0 4px 0 #000000;
+}
+.pp-duo-dark:hover { background: #2f2f2f; }
+.pp-duo-dark:active { box-shadow: 0 1px 0 #000000; }
+
+.pp-duo-ghost {
+  background: #ffffff;
+  color: #242424;
+  border: 2px solid #e5e5e5;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+.pp-duo-ghost:hover { background: #fafafa; border-color: #d0d0d0; }
+
+.pp-duo-red {
+  background: #ff4b4b;
+  color: #ffffff;
+  border-color: #ff4b4b;
+  box-shadow: 0 4px 0 #cc0000;
+}
+.pp-duo-red:hover { background: #ff5c5c; }
+.pp-duo-red:active { box-shadow: 0 1px 0 #cc0000; }
+
+/* ================== Pattern background (subtle) ================== */
+.pp-bg-canvas {
+  background-color: var(--pp-bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(34,42,53,0.05) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* ================== Animations ================== */
 @keyframes ppFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
 .pp-float { animation: ppFloat 3.2s ease-in-out infinite; }
 
-/* Fire flicker */
+@keyframes ppPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.85; }
+}
+.pp-pulse { animation: ppPulse 1.8s ease-in-out infinite; }
+
 @keyframes ppFire {
-  0%, 100% { transform: scale(1) rotate(-2deg); filter: hue-rotate(0deg); }
-  50% { transform: scale(1.1) rotate(2deg); filter: hue-rotate(10deg); }
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.08) rotate(2deg); }
 }
 .pp-fire { animation: ppFire 0.9s ease-in-out infinite; }
 
-/* Shimmer for locked nodes */
+@keyframes ppSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.pp-slide-up { animation: ppSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
 @keyframes ppShimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 .pp-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(34,42,53,0.08) 50%, transparent 100%);
   background-size: 200% 100%;
   animation: ppShimmer 2.4s linear infinite;
 }
 
 /* Custom scrollbar */
-*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
 *::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+*::-webkit-scrollbar-thumb { background: rgba(34,42,53,0.15); border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(34,42,53,0.25); }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pp-animated-bg, .pp-pulse, .pp-float, .pp-fire, .pp-shimmer { animation: none !important; }
+  .pp-float, .pp-pulse, .pp-fire, .pp-shimmer, .pp-slide-up { animation: none !important; }
   * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
-/* Utility for no-select text on game elements */
 .no-select { user-select: none; -webkit-user-select: none; }
 
-/* Annotation highlights */
+/* Annotation highlights (used in Breakdown) */
 .annot-red {
-  background: rgba(229,57,53,0.22);
+  background: rgba(229,57,53,0.14);
   border-bottom: 2px solid #E53935;
   padding: 0 2px;
   border-radius: 3px;
 }
 .annot-amber {
-  background: rgba(255,152,0,0.22);
+  background: rgba(255,152,0,0.14);
   border-bottom: 2px solid #FF9800;
   padding: 0 2px;
   border-radius: 3px;
 }
 
-/* Gradient text */
+/* Gradient text used in level titles */
 .gradient-text {
-  background: linear-gradient(135deg, #FFD700 0%, #F093FB 50%, #4facfe 100%);
+  background: linear-gradient(135deg, #58cc02 0%, #1cb0f6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Utility for dashed trail connector on skill map */
+.pp-path-dot {
+  width: 6px; height: 6px; border-radius: 9999px;
+  background: #d7d7d7;
 }

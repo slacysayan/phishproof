@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import Landing from '@/pages/Landing';
 import Welcome from '@/pages/Welcome';
 import SkillMap from '@/pages/SkillMap';
 import GameRound from '@/pages/GameRound';
@@ -14,7 +15,8 @@ function App() {
       <BrowserRouter>
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Welcome />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/start" element={<Welcome />} />
             <Route path="/map" element={<SkillMap />} />
             <Route path="/lesson/:lessonId" element={<GameRound />} />
             <Route path="/breakdown/:lessonId" element={<Breakdown />} />

@@ -1,32 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { motion } from 'framer-motion';
 import Kavach from '@/components/Mascot/Kavach';
-import { ClayButton } from '@/components/UI/ClayButton';
 import { useGameStore } from '@/store/gameStore';
-import { ShieldCheck, Zap, Users, TrendingUp } from 'lucide-react';
-
-const stats = [
-  { icon: '📱', text: '43% of Indian teens clicked a phishing link' },
-  { icon: '💸', text: 'UPI fraud up 300% in 3 years' },
-  { icon: '⚠️', text: '28% shared OTP with strangers' },
-];
+import { ChevronRight, ShieldCheck } from 'lucide-react';
 
 const Welcome = () => {
   const navigate = useNavigate();
   const titleRef = useRef(null);
-  const statsRef = useRef(null);
   const { setPlayerName, playerName, ensureDailyMissions } = useGameStore();
   const [name, setName] = useState(playerName || '');
 
   useEffect(() => {
     ensureDailyMissions();
     const tl = gsap.timeline();
-    tl.fromTo(titleRef.current, { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.6)' });
-    if (statsRef.current) {
-      tl.fromTo(statsRef.current.children, { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.12, duration: 0.5, ease: 'power2.out' }, '-=0.3');
-    }
+    tl.fromTo(titleRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' });
   }, [ensureDailyMissions]);
 
   const start = () => {
@@ -35,49 +23,57 @@ const Welcome = () => {
   };
 
   return (
-    <div className="min-h-dvh pp-animated-bg relative overflow-hidden" data-testid="welcome-page">
-      <div className="pp-orb pp-orb-1" />
-      <div className="pp-orb pp-orb-2" />
-      <div className="pp-orb pp-orb-3" />
-      <div className="relative z-10 mx-auto w-full max-w-[440px] px-4 pt-8 pb-12 flex flex-col gap-6">
-        <motion.div initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.7, ease: [0.175, 0.885, 0.32, 1.275] }} className="pp-float flex justify-center">
-          <Kavach size={160} expression="idle" />
-        </motion.div>
-        <div ref={titleRef} className="text-center">
-          <h1 className="font-heading font-black text-5xl leading-none mb-2 gradient-text" data-testid="welcome-title">PhishProof</h1>
-          <p className="text-white/85 text-base font-medium">Train your brain. Outsmart every scam.</p>
+    <div className="min-h-dvh bg-white flex flex-col" data-testid="welcome-page">
+      <nav className="border-b border-[#0000000d]">
+        <div className="mx-auto max-w-[1200px] px-4 h-16 flex items-center justify-between">
+          <button onClick={() => navigate('/')} className="flex items-center gap-2">
+            <Kavach size={36} expression="idle" />
+            <span className="font-display font-bold text-lg" style={{fontFamily: 'var(--font-display)'}}>PhishProof</span>
+          </button>
+          <div className="text-xs text-[#898989]">Step 1 of 1</div>
+        </div>
+      </nav>
+
+      <div className="flex-1 mx-auto w-full max-w-[460px] px-4 py-10 flex flex-col items-center text-center">
+        <div className="pp-float mb-6">
+          <Kavach size={180} expression="happy" />
         </div>
 
-        <div ref={statsRef} className="flex flex-col gap-2">
-          {stats.map((s, i) => (
-            <div key={i} className="pp-glass px-4 py-2.5 flex items-center gap-3" data-testid={`welcome-stat-${i}`}>
-              <span className="text-lg">{s.icon}</span>
-              <span className="text-white/90 text-[13px] font-medium">{s.text}</span>
-            </div>
-          ))}
+        <div ref={titleRef}>
+          <h1 className="text-[36px] md:text-[44px] leading-[1.1] font-bold tracking-tight mb-3" style={{fontFamily: 'var(--font-display)'}}>
+            Hi! I'm <span className="text-[#58cc02]">Kavach</span>.<br />I'll teach you to spot scams.
+          </h1>
+          <p className="text-[#6b6b6b] text-base md:text-lg leading-relaxed">
+            Tell me your name so I can cheer you on during lessons. (Optional — you can skip.)
+          </p>
         </div>
 
-        <div className="pp-glass p-4 mt-1">
-          <label className="block text-xs text-white/75 mb-2 font-heading font-bold uppercase tracking-widest">Your name (optional)</label>
+        <div className="w-full mt-8">
+          <label className="block text-[11px] font-semibold uppercase tracking-widest text-[#898989] mb-2">Your name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Arjun"
-            className="w-full h-11 rounded-xl bg-white/10 border border-white/15 px-3 text-white placeholder-white/40 focus:outline-none focus:border-white/35"
+            className="w-full h-14 rounded-xl bg-white border-2 border-[#e5e5e5] focus:border-[#1cb0f6] px-4 text-[#242424] placeholder-[#b0b0b0] text-base font-medium outline-none transition-colors"
             data-testid="welcome-name-input"
             maxLength={24}
+            onKeyDown={(e) => { if (e.key === 'Enter') start(); }}
           />
         </div>
 
-        <div className="flex flex-col gap-3 mt-1">
-          <ClayButton variant="primary" size="xl" onClick={start} data-testid="welcome-start-button" className="w-full flex items-center justify-center gap-2">
-            <Zap className="w-5 h-5" /> Start Training
-          </ClayButton>
-          <div className="flex items-center justify-center gap-5 text-[11px] text-white/55 pt-1">
-            <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> No login</span>
-            <span className="flex items-center gap-1"><Users className="w-3 h-3" /> 60+ scenarios</span>
-            <span className="flex items-center gap-1"><TrendingUp className="w-3 h-3" /> 6 categories</span>
+        <div className="w-full mt-8 flex flex-col gap-3">
+          <button onClick={start} className="pp-duo-btn pp-duo-green h-14 w-full text-sm flex items-center justify-center gap-2" data-testid="welcome-start-button">
+            Let's Go <ChevronRight className="w-4 h-4" />
+          </button>
+          <button onClick={start} className="text-sm text-[#898989] hover:text-[#242424] py-2" data-testid="welcome-skip-button">
+            Skip & play as guest
+          </button>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-[#0000000d] w-full">
+          <div className="flex items-center justify-center gap-2 text-xs text-[#898989]">
+            <ShieldCheck className="w-4 h-4 text-[#58cc02]" /> We save your progress only on this device.
           </div>
         </div>
       </div>

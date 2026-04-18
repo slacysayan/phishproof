@@ -15,15 +15,12 @@ export const ScenarioDeviceFrame = ({ type, content, highlight = false, targets 
       case 'call': return <CallTranscript content={content} highlight={highlight} targets={targets} />;
       case 'email': return <EmailViewer content={content} highlight={highlight} targets={targets} />;
       case 'website': return <FakeWebsite content={content} highlight={highlight} targets={targets} />;
-      default: return <div className="p-6 text-white/70 text-center text-sm">Scenario loading...</div>;
+      default: return <div className="p-6 text-[#898989] text-center text-sm">Scenario loading...</div>;
     }
   };
   return (
-    <div
-      className="rounded-[32px] bg-[rgba(255,255,255,0.16)] border border-white/15 shadow-[0_30px_80px_rgba(0,0,0,0.55)] p-2 backdrop-blur-[12px]"
-      data-testid="scenario-device-frame"
-    >
-      <div className="rounded-[24px] overflow-hidden bg-[rgba(0,0,0,0.45)] border border-white/10">
+    <div className="rounded-[28px] bg-[#1a1a1a] p-2 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.35),0_0_0_1px_rgba(34,42,53,0.08)]" data-testid="scenario-device-frame">
+      <div className="rounded-[22px] overflow-hidden bg-[#0B1020] border border-black/20">
         {render()}
       </div>
     </div>

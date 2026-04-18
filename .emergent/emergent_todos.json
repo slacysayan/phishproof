@@ -1,54 +1,26 @@
 [
   {
-    "content": "Phase 2: Install dependencies",
-    "status": "completed"
+    "content": "Update global CSS: remove purple gradient, apply Cal.com white canvas + Cal Sans font + Cal shadow system",
+    "status": "in_progress"
   },
   {
-    "content": "Phase 2: Get design guidelines from design_agent",
-    "status": "completed"
+    "content": "Create new Duolingo-style Landing page (/) with Cal.com monochrome design + Kavach hero, features, testimonials, footer",
+    "status": "pending"
   },
   {
-    "content": "Phase 2: Build scenario bank + game config (60+ Indian scam scenarios)",
-    "status": "completed"
+    "content": "Move existing Welcome (name input) to /start, update routing",
+    "status": "pending"
   },
   {
-    "content": "Phase 2: Build Zustand gameStore with localStorage persistence",
-    "status": "completed"
+    "content": "Update SkillMap, GameRound, Breakdown, Results to use Cal-style light surfaces (not dark purple)",
+    "status": "pending"
   },
   {
-    "content": "Phase 2: Build global CSS (gradient bg, clay/glass tokens, fonts)",
-    "status": "completed"
+    "content": "Update GlassCard / ClayButton to Cal.com shadow system",
+    "status": "pending"
   },
   {
-    "content": "Phase 2: Build Kavach mascot + UI primitives",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Build 6 Scenario renderers",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Build 6 Question types",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Build GameHUD + Feedback components",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Build 5 Pages + Router",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: Build Web Audio sound system + Daily missions panel",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 2: All user stories (US1-US15) covered and validated",
-    "status": "completed"
-  },
-  {
-    "content": "Phase 3: End-to-end testing via testing_agent_v3 - 100% PASS, 0 bugs",
-    "status": "completed"
+    "content": "Verify full flow end-to-end visually + testing_agent_v3",
+    "status": "pending"
   }
 ]
