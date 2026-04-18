@@ -1,54 +1,54 @@
 [
   {
     "content": "Phase 2: Install dependencies (gsap, framer-motion, zustand, canvas-confetti, lucide-react)",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Get design guidelines from design_agent",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Build scenario bank + game config (60+ Indian scam scenarios, levels, badges)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Build Zustand gameStore with localStorage persistence",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Phase 2: Build global CSS (gradient bg, clay/glass tokens, fonts)",
-    "status": "pending"
+    "status": "completed"
   },
   {
-    "content": "Phase 2: Build Kavach mascot (SVG + GSAP 6 expressions) + UI primitives (GlassCard, ClayButton, BadgeUnlock, LevelUpBurst)",
-    "status": "pending"
+    "content": "Phase 2: Build Kavach mascot (SVG + GSAP 6 expressions) + UI primitives",
+    "status": "completed"
   },
   {
     "content": "Phase 2: Build 6 Scenario renderers (SMS, UPI, WhatsApp, Call, Email, Website)",
-    "status": "pending"
+    "status": "completed"
   },
   {
-    "content": "Phase 2: Build 6 Question types (LegitOrScam, SpotTheFlag, WhatWouldYouDo, TrueOrFalse, FillTheSafe, RankTheDanger)",
-    "status": "pending"
+    "content": "Phase 2: Build 6 Question types",
+    "status": "completed"
   },
   {
-    "content": "Phase 2: Build GameHUD (Hearts, XPBar, StreakBadge, ProgressDots) + Feedback (CorrectFlash, WrongShake, AnnotationLayer)",
-    "status": "pending"
+    "content": "Phase 2: Build GameHUD + Feedback components",
+    "status": "completed"
   },
   {
-    "content": "Phase 2: Build 5 Pages (Welcome, SkillMap, GameRound, Breakdown, Results) + Router",
-    "status": "pending"
+    "content": "Phase 2: Build 5 Pages + Router",
+    "status": "completed"
   },
   {
     "content": "Phase 2: Build Web Audio sound system + Daily missions panel",
-    "status": "pending"
+    "status": "completed"
   },
   {
-    "content": "Phase 2: All user stories (US1-US15) validated in build",
-    "status": "pending"
+    "content": "Phase 2: Validate end-to-end play flow via screenshots",
+    "status": "completed"
   },
   {
     "content": "Phase 3: End-to-end testing via testing_agent_v3 + bug fixes",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
