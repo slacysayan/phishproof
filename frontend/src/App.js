@@ -8,8 +8,19 @@ import GameRound from '@/pages/GameRound';
 import Breakdown from '@/pages/Breakdown';
 import Results from '@/pages/Results';
 import '@/App.css';
+import { useGameStore } from '@/store/gameStore';
 
 function App() {
+  const { darkMode } = useGameStore();
+
+  React.useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
     <div className="App">
       <BrowserRouter>

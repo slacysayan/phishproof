@@ -23,6 +23,7 @@ const initialState = {
   reducedMotion: false,
   dailyMissions: { date: null, missions: [] },
   stats: { otpCaught: 0, phishingCaught: 0, upiCaught: 0, fastCorrect: 0 },
+  darkMode: false,
   // session state (not persisted)
 };
 
@@ -33,6 +34,7 @@ export const useGameStore = create(
 
       setPlayerName: (name) => set({ playerName: name }),
       toggleSound: () => set({ soundEnabled: !get().soundEnabled }),
+      toggleDarkMode: () => set({ darkMode: !get().darkMode }),
 
       // ===== XP / Level =====
       addXP: (amount) => {
